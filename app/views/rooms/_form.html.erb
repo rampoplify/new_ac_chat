@@ -1,0 +1,24 @@
+<%= form_with(model: room) do |form| %>
+  <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+        <% room.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p><b>Create a new room</b></p>
+
+  <div class="form-group mb-3">
+    <%= form.label "Create a new room" %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Room name' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Add Room", class: 'btn btn-outline-primary btn-block' %>
+  </div>
+<% end %>
