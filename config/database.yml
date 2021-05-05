@@ -28,7 +28,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: new_ac_chat
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: 
-  host: localhost
+  host: 127.0.0.1
