@@ -25,6 +25,10 @@ test:
   database: new_ac_chat_test
 
 production:
-  <<: *default
-  database: new_ac_chat_production
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: new_ac_chat
+  pool: 5
+  username: root
+  password: 
+  host: localhost
