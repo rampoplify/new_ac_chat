@@ -83,4 +83,3 @@ production:
   database: chat_app_production
   username: root
   password: 
-  socket: /var/run/postgresql/.s.PGSQL.5432
