@@ -19,7 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
-gem 'mysql2', '~> 0.5.2'
+# gem 'mysql2', '~> 0.5.2'
+# gem 'pg', '~> 0.18.4'
 gem 'devise', '~> 4.2'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -32,7 +33,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'mysql2', '~> 0.5.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :production do
+  gem 'pg', '~> 0.18.4'
 end
 
 group :development do
