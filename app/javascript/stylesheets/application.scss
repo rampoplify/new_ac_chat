@@ -41,8 +41,9 @@
 		}
 	}
 	.video_container {
-		width: 640px;
-		height: 480px;
+		display: none;
+		max-width: 640px;
+		max-height: 480px;
 	}
 }
 .card.no-outline {

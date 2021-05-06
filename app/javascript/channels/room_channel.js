@@ -19,16 +19,23 @@ document.addEventListener('turbolinks:load', () => {
     },
 
     received(data) {
+      const element = document.getElementById('user-id')
+      const user_id = Number(element.getAttribute('data-user-id'))
       if(data.image){
-        // document.getElementById('video_container').style.display = 'block'
+        document.getElementById('video_container').style.display = 'block'
+        if (data.user.id == user_id ){
+          document.getElementById('ima').style.width = 0
+          document.getElementById('ima').style.height = 0
+        }else {
+          document.getElementById('video').style.width = 0
+          document.getElementById('video').style.height = 0
+        }
         $('#ima').attr( 'src', "/cam/"+ data.image + ".png")
       }else {
-        console.log(data)
-        const element = document.getElementById('user-id')
-        const user_id = Number(element.getAttribute('data-user-id'))
-
         let html;
         if (user_id === data.message.user_id){
+          $('.send_message_btn').attr('disabled', false)
+          $('#message_content').val('')
           html = data.sender
         } else {
           html = data.receiver
@@ -36,6 +43,8 @@ document.addEventListener('turbolinks:load', () => {
 
         const messageContainer = document.getElementById('message')
         messageContainer.innerHTML = messageContainer.innerHTML + html
+        let elmnt = document.getElementById("message");
+        elmnt.lastElementChild.scrollIntoView()
       }
     }
   });

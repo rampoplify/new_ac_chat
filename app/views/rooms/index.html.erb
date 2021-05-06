@@ -3,7 +3,7 @@
 <div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12 col-xs-12">
       <div class="card no-outline">
 <!--         <div class="card-body">
           <small>
@@ -31,9 +31,9 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-9">
+    <div class="col-lg-9 col-xl-9 col-md-9 col-sm-12 col-xs-12">
       <% if @room.present? %>
-        <div class="chat-room">
+        <div class="chat-room pt-5">
           <nav class="navbar navbar-light bg-light mb-4">
             <span class="navbar-brand"><%= @room.name  %></span>
             <div class="pull-right">
@@ -42,12 +42,12 @@
               </button>
             </div>
           </nav>
-          <div id="video_container" class="video_container mb-4">
-            <video id="video" width="640" height="480" controls></video>
-            <canvas id="canvas" width="640" height="480"></canvas>
-            <img id='ima' style="width: 640px; height: 480px;">
+          <div id="video_container" class="video_container p-4 mb-5">
+            <video id="video" width="640" height="480" controls style="width: 0"></video>
+            <canvas id="canvas" width="640" height="480" style="width: 0px;"></canvas>
+            <img id='ima' style="width: 100%;">
           </div>
-          <div id="message">
+          <div id="message" style="margin-bottom: 100px;">
             <% @room.messages.each do |message| %>
               <%= render 'messages/message', message: message %>
             <% end %>
@@ -79,7 +79,10 @@
     navigator.mediaDevices.getUserMedia({video: true})
     .then(function(stream) {
       console.log(stream)
+
       document.getElementById('video_container').style.display = 'block'
+      document.getElementById('video').style.width = '100%'
+      document.getElementById('ima').style.width = '100%'
       video = document.querySelector('video')
       
       // if ('srcObject' of video){
@@ -107,7 +110,7 @@
               processData: false,
               contentType: false
             })
-          },500)
+          },250)
         }
       })
 
